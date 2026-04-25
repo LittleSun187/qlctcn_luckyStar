@@ -1,0 +1,333 @@
+
+:root {
+    --primary-blue: #2b659c;
+    --light-blue: #e3f2fd;
+    --bg-gradient: linear-gradient(135deg, #d6e4f9 0%, #a2c2e6 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+}
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.05);
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin: 0 auto 15px;
+}
+
+.menu a {
+    display: block;
+    padding: 15px 20px;
+    color: #444;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.menu a i { margin-right: 15px; width: 20px; }
+
+.menu a.active, .menu a:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.logout-section {
+    margin-top: auto;
+}
+.logout-section a {
+    display: block;
+    padding: 15px;
+    border-radius: 15px;
+    color: #444;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logout-section a:hover {
+    background: #fdfafa;
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+#update-infomation-section {
+    padding: 20px;
+    background: white;
+    border-radius: 25px;
+    
+    
+    
+}
+
+/* Header của module */
+#update-infomation-section .module-header {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0 20px 25px;
+    margin-bottom: 30px;
+   
+}
+
+#update-infomation-section .module-title {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#update-infomation-section .module-subtitle {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Avatar Section */
+#update-infomation-section .avatar-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    background: #f8fbff;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+#update-infomation-section .avatar-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    background-image: url('https://via.placeholder.com/100'); /* Ảnh mặc định */
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#update-infomation-section .btn-upload {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #fff;
+    border: 1px solid #4facfe;
+    color: #4facfe;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#update-infomation-section .btn-upload:hover {
+    background: #4facfe;
+    color: #fff;
+}
+
+#update-infomation-section .upload-note {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* Grid Layout cho Form */
+#update-infomation-section .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#update-infomation-section .input-group.full-width {
+    grid-column: span 2;
+}
+
+#update-infomation-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+#update-infomation-section input[type="text"],
+#update-infomation-section input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+#update-infomation-section input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    outline: none;
+}
+
+#update-infomation-section input:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Giới tính - Radio Group */
+#update-infomation-section .radio-group {
+    display: flex;
+    gap: 20px;
+    height: 45px;
+    align-items: center;
+}
+
+#update-infomation-section .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Nút bấm Lưu */
+#update-infomation-section .form-actions {
+    margin-top: 30px;
+    text-align: right;
+}
+
+#update-infomation-section .btn-primary-save {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+    transition: 0.3s;
+}
+
+#update-infomation-section .btn-primary-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+/* Container cho ô input có nút kèm theo */
+.input-with-button {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #4facfe;
+    color: #4facfe;
+    border-radius: 8px;
+    padding: 0 15px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Trạng thái mặc định: Ẩn hoàn toàn */
+.verify-email-hidden-content {
+    display: none !important;
+}
+
+/* Trạng thái khi kích hoạt: Hiện lên */
+.verify-email-show-content {
+    display: block !important;
+    animation: fadeInSlide 0.4s ease-out;
+}
+
+/* Style chi tiết cho vùng xác thực */
+#verify-email-block {
+    background: #f0f7ff;
+    border: 1px solid #cce5ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    grid-column: span 2 !important;
+}
+
+.input-new-email {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.otp-action-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-otp {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.btn-verify-now {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

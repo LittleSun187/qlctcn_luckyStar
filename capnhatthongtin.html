@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật thông tin</title>
+    <link rel="stylesheet" href="./stylecapnhatthongtin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3>Xin chào, Admin!</h3>
+            </div>
+<nav class="menu">
+    <a href="./Trangchu.html" class="menu-item" onclick="event.preventDefault(); goToPage('./Trangchu.html')">
+        <i class="fa-solid fa-house"></i> Trang chủ
+    </a>
+
+    <a href="./giaodich.html" class="menu-item" onclick="event.preventDefault(); goToPage('./giaodich.html')">
+        <i class="fa-solid fa-receipt"></i> Giao dịch
+    </a>
+
+    <a href="./thongke.html" class="menu-item" onclick="event.preventDefault(); goToPage('./thongke.html')">
+        <i class="fa-solid fa-chart-pie"></i> Thống kê
+    </a>
+
+   <a href="./danhmuc.html" class="menu-item" onclick="event.preventDefault(); goToPage('./danhmuc.html')">
+        <i class="fa-solid fa-layer-group"></i> Danh mục
+    </a>
+
+    <a href="./capnhatthongtin.html" class="menu-item active" onclick="event.preventDefault(); goToPage('./capnhatthongtin.html')">
+        <i class="fa-solid fa-user-pen"></i> Cập nhật thông tin
+    </a>
+</nav>
+            <div class="logout-section">
+                <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+        </aside>
+    <main class="main-content">
+        <section id="update-infomation-section" class="content-page hidden-content">
+        <div class="content-wrapper-card">
+            <div class="module-header">
+            <h2 class="module-title">Thông tin tài khoản</h2>
+            <p class="module-subtitle">Quản lý thông tin cá nhân để bảo mật tài khoản tốt hơn</p>
+        </div>
+
+        <form class="update-form-container" onsubmit="saveUser(event)">
+            <div class="avatar-upload-wrapper">
+                <div class="avatar-preview" id="avatarPreview"></div>
+                <div class="avatar-edit-tools">
+                    <label for="imageUpload" class="btn-upload">Chọn ảnh</label>
+                    <input type='file' id="imageUpload" accept=".image/*" hidden />
+                    <span class="upload-note">Dung lượng file tối đa 5 MB.</span>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="userName" placeholder="Nhập họ và tên">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <div class="input-with-button">
+                        <input type="email" id="userEmail" value="example@gmail.com" disabled>
+                        <button type="button" id="btnChangeEmail" class="btn-outline">Thay đổi</button>
+                    </div>
+                </div>
+                <div id="verify-email-block" class="verify-email-hidden-content">
+                    <div class="otp-container">
+                        <label>Xác thực Email mới</label>
+                        <input type="email" id="newEmailInput" placeholder="Nhập Email mới..." class="input-new-email">
+                        
+                        <div class="otp-action-row">
+                            <input type="text" maxlength="6" placeholder="Mã OTP (6 số)" class="input-otp">
+                            <button type="button" class="btn-verify-now">Xác thực</button>
+                        </div>
+                        
+                        <p class="otp-timer-text">Mã sẽ hết hạn sau <span id="timer">60</span>s</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" id="userPhone" placeholder="0123 456 xxx">
+                </div>
+                <div class="input-group">
+                    <label>Giới tính</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="male"> Nam</label>
+                        <label><input type="radio" name="gender" value="female"> Nữ</label>
+                        <label><input type="radio" name="gender" value="other"> Khác</label>
+                    </div>
+                </div>
+                <div class="input-group full-width">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="userAddress" placeholder="Nhập địa chỉ">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary-save">Lưu thay đổi</button>
+            </div>
+        </form>
+        </div>
+    </section>
+
+
+    </main>
+</div>
+
+
+<script src="./scripcapnhatthongtin.js"></script>
+<script src="./storage.js"></script>
+</body>
+</html>

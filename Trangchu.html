@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Quản Lý</title>
+    <link rel="stylesheet" href="./styletrangchu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3>Xin chào, Admin!</h3>
+            </div>
+<nav class="menu">
+    <a href="./Trangchu.html" class="menu-item active" onclick="event.preventDefault(); goToPage('./Trangchu.html')">
+        <i class="fa-solid fa-house"></i> Trang chủ
+    </a>
+
+    <a href="./giaodich.html" class="menu-item" onclick="event.preventDefault(); goToPage('./giaodich.html')">
+        <i class="fa-solid fa-receipt"></i> Giao dịch
+    </a>
+
+    <a href="./thongke.html" class="menu-item" onclick="event.preventDefault(); goToPage('./thongke.html')">
+        <i class="fa-solid fa-chart-pie"></i> Thống kê
+    </a>
+
+    <a href="./danhmuc.html" class="menu-item" onclick="event.preventDefault(); goToPage('./danhmuc.html')">
+        <i class="fa-solid fa-layer-group"></i> Danh mục
+    </a>
+
+    <a href="./capnhatthongtin.html" class="menu-item" onclick="event.preventDefault(); goToPage('./capnhatthongtin.html')">
+        <i class="fa-solid fa-user-pen"></i> Cập nhật thông tin
+    </a>
+</nav>
+            <div class="logout-section">
+                <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+        </aside>
+
+     <main class="main-content">
+   <section id="dashboard-section" class="content-page">
+    <div class="fancy-welcome-box">
+        <div class="welcome-text">
+            <h1>Chào mừng Admin! 👋</h1>
+            <p id="currentDate">Hôm nay là ngày 22 tháng 3 năm 2026. Bạn đang làm rất tốt việc quản lý tài chính!</p>
+            <div class="quick-summary">
+                <p>✨ Chúc bạn có <span class="highlight">một ngày mới tốt lành </span>.</p>
+                <p>💡 Vạn sự  <span class="highlight">như ý</span>, tỷ sự <span class="highlight">như mơ</span>.</p>
+            </div>
+            <a href="./giaodich.html"><button class="btn-primary">Xem Giao Dịch Ngay</button></a>
+            
+        </div>
+        <div class="welcome-icon">
+            <i class="fa-solid fa-chart-line-up"></i> </div>
+
+    </div>
+</section>
+    
+</main>
+    </div>
+    <script src="./scriptrangchu.js"></script>
+    
+</body>
+</html>
+
+

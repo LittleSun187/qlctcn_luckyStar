@@ -1,0 +1,176 @@
+:root {
+    --primary-blue: #2b659c;
+    --light-blue: #e3f2fd;
+    --bg-gradient: linear-gradient(135deg, #d6e4f9 0%, #a2c2e6 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.05);
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin: 0 auto 15px;
+}
+
+.menu a {
+    display: block;
+    padding: 15px 20px;
+    color: #444;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.menu a i { margin-right: 15px; width: 20px; }
+
+.menu a.active, .menu a:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.logout-section {
+    margin-top: auto;
+}
+.logout-section a {
+    display: block;
+    padding: 15px;
+    border-radius: 15px;
+    color: #444;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logout-section a:hover {
+    background: #fdfafa;
+    color: rgb(125, 209, 240);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+    
+
+.main-content.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===== TRANG CHỦ ===== */
+.content-page {
+    transition: all 0.4s ease;
+}
+
+.fancy-welcome-box {
+    background: white;
+    border-radius: 30px;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    margin: 20px;
+    border: 1px solid #f0f7ff;
+}
+
+.welcome-text h1 {
+    color: var(--primary-blue);
+    font-size: 38px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.welcome-text p {
+    color: #555;
+    font-size: 16px;
+    max-width: 600px;
+}
+
+/* ===== BOX THÔNG TIN NHANH ===== */
+.quick-summary {
+    margin: 25px 0;
+    background: #f0f7ff;
+    padding: 15px;
+    border-radius: 15px;
+    border-left: 5px solid var(--primary-blue);
+}
+
+.quick-summary p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.highlight {
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+    padding: 12px 25px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background: #1a4d7c;
+    transform: translateY(-2px);
+}
+
+/* ===== ICON TRANG TRÍ ===== */
+.welcome-icon i {
+    font-size: 120px;
+    color: rgba(43, 101, 156, 0.1);
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao dịch- Quản Lý</title>
+    <link rel="stylesheet" href="./stylegiaodich.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3>Xin chào, Admin!</h3>
+            </div>
+<nav class="menu">
+    <a href="./Trangchu.html" class="menu-item" onclick="event.preventDefault(); goToPage('./Trangchu.html')">
+        <i class="fa-solid fa-house"></i> Trang chủ
+    </a>
+
+    <a href="./giaodich.html" class="menu-item active" onclick="event.preventDefault(); goToPage('./giaodich.html')">
+        <i class="fa-solid fa-receipt"></i> Giao dịch
+    </a>
+
+    <a href="./thongke.html" class="menu-item" onclick="event.preventDefault(); goToPage('./thongke.html')">
+        <i class="fa-solid fa-chart-pie"></i> Thống kê
+    </a>
+
+    <a href="./danhmuc.html" class="menu-item" onclick="event.preventDefault(); goToPage('./danhmuc.html')">
+        <i class="fa-solid fa-layer-group"></i> Danh mục
+    </a>
+
+    <a href="./capnhatthongtin.html" class="menu-item" onclick="event.preventDefault(); goToPage('./capnhatthongtin.html')">
+        <i class="fa-solid fa-user-pen"></i> Cập nhật thông tin
+    </a>
+</nav>
+            <div class="logout-section">
+                <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+        </aside>
+    <main class="main-content">
+    <div class="content-box">
+   
+        <div class="header">
+            <input type="month" id="monthPicker">
+        </div>
+   
+        <div class="tabs">
+             <div class="tab-box">
+                <p>Chi tiêu</p>
+                <h3 id="expense"></h3>
+            </div>
+
+            <div class="tab-box">
+                <p>Thu nhập</p>
+                <h3 id="income"></h3>
+            </div>
+        </div>
+
+    <!-- Budget -->
+    <div class="budget-box">
+        <div class="budget-row">
+            <h4>Ngân sách</h4>
+            <input type="text" id="budgetInput" placeholder="Nhập...">
+            <button onclick="setBudget()">Thiết lập</button>
+        </div>
+
+        <div class="remain">
+            
+            <h4>Xem số dư:</h4>
+            <div class="remain-box">
+            <p>Ngân sách: <span id="remainBudget"></span></p>
+            <p>Thu nhập: <span id="remainIncome"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction -->
+    <div id="transaction-list">
+        
+    </div>
+    
+    <div class="bottom-wrapper">
+        <div class="bottom-bar">
+                <button class="search-btn" onclick="openSearchPopup()">🔍 Tìm Kiếm</button>
+                <button class="history-btn" onclick="openHistoryPopup()">Lịch sử</button>
+        </div>
+    </div>
+    <div class="add-btn"></div>
+</div>
+<!-- POPUP Thêm giao dịch -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+
+        <!-- chọn danh mục -->
+        <div class="form-box category-select" onclick="toggleCategoryDropdown()">
+            <div class="circle" id="selectedCircle">
+                    <i id="selectedIcon" class="fa-solid fa-layer-group"></i>
+            </div>
+            <span id="selectedCategory">Chọn chủ đề </span>
+            <i class="fa-solid fa-chevron-down"> </i>
+             <div class="warning-icon" id="warningCategory"> !</div>
+        </div>
+
+        <div class="category-dropdown" id="categoryDropdown">
+         <div class="dropdown-tabs">
+                <button class="dropdown-tab active" onclick="switchType('expense', event)">
+                    Chi tiêu
+                </button>
+                <button class="dropdown-tab" onclick="switchType('income', event)">
+                        Thu nhập
+                </button>
+        </div>
+
+        <div id="dropdownCategoryList"></div>
+        </div>
+        <!-- ngày giờ -->
+        <div class="form-box">
+            
+            <input type="date" id="date">
+            <div class="divider"></div>
+
+            <input type="time" id="time">
+            
+        </div>
+
+        <!-- ghi chú -->
+        <input class="note" id="note" type="text" placeholder="Nhập ghi chú...">
+
+        <!-- tiền -->
+        <div class="money-box">
+            <input type="number" id="amount" value="0">
+             <div class="warning-icon" id="warningAmount">!</div>
+            <button class="submit-btn" onclick="saveTransaction()">✔</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP xem chi tiết giao dịch -->
+<div class="popup" id="detailPopup">
+    <div class="popup-content detail-content">
+        <div class="detail-header">
+            <h3 id="detailCategory">Danh mục</h3>
+            <button class="close-btn" onclick="closeDetail()">✕</button>
+        </div>
+
+        <div class="detail-body">
+            <div class="detail-row">
+                <span class="label">Loại:</span>
+                <span id="detailType">Chi tiêu</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Số tiền:</span>
+                <span id="detailAmount">0 đ</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Ngày:</span>
+                <span id="detailDate">--/--/--</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Giờ:</span>
+                <span id="detailTime">--:--</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Ghi chú:</span>
+                <span id="detailNote">Không có ghi chú</span>
+            </div>
+        </div>
+
+        <div class="detail-actions">
+            <button class="btn-cancel" onclick="closeDetail()">Hủy</button>
+            <button class="btn-edit" onclick="enterEditMode()">✏️ Sửa</button>
+            <button class="btn-delete" onclick="deleteTransaction()">🗑️ Xóa</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP sửa giao dịch -->
+<div class="popup" id="editPopup">
+    <div class="popup-content">
+
+        <!-- chọn danh mục -->
+        <div class="form-box category-select" onclick="toggleEditCategoryDropdown()">
+            <div class="circle" id="editSelectedCircle">
+                    <i id="editSelectedIcon" class="fa-solid fa-layer-group"></i>
+            </div>
+            <span id="editSelectedCategory">Chọn chủ đề </span>
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+        <div class="category-dropdown" id="editCategoryDropdown">
+         <div class="dropdown-tabs">
+                <button class="dropdown-tab active" onclick="switchEditType('expense', event)">
+                    Chi tiêu
+                </button>
+                <button class="dropdown-tab" onclick="switchEditType('income', event)">
+                        Thu nhập
+                </button>
+        </div>
+
+        <div id="editDropdownCategoryList"></div>
+        </div>
+        <!-- ngày giờ -->
+        <div class="form-box">
+            <i class="fa-solid fa-calendar-days"></i>
+            <input type="date" id="editDate">
+
+            <div class="divider"></div>
+
+            <input type="time" id="editTime">
+            <i class="fa-regular fa-clock"></i>
+        </div>
+
+        <!-- ghi chú -->
+        <input class="note" id="editNote" type="text" placeholder="Nhập ghi chú...">
+
+        <!-- tiền -->
+        <div class="money-box">
+            <input type="number" id="editAmount" value="0">
+            <button class="submit-btn" onclick="saveEditTransaction()">✔</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP Tìm kiếm giao dịch -->
+<div class="popup" id="searchPopup">
+    <div class="popup-content search-content">
+        <div class="search-header">
+            <h3>Tìm kiếm giao dịch</h3>
+            <button class="close-btn" onclick="closeSearchPopup()">✕</button>
+        </div>
+
+        <div class="search-body">
+            <!-- Tìm kiếm theo ghi chú -->
+            <input type="text" id="searchNote" placeholder="🔍 Tìm theo ghi chú..." class="search-input">
+
+            <!-- Tìm kiếm theo danh mục -->
+            <div class="search-section">
+                <label>Danh mục:</label>
+                <select id="searchCategory">
+                    <option value="">-- Tất cả --</option>
+                    <option value="expense">Chi tiêu</option>
+                    <option value="income">Thu nhập</option>
+                </select>
+            </div>
+
+            <!-- Tìm kiếm theo khoảng ngày -->
+            <div class="search-section">
+                <label>Từ ngày:</label>
+                <input type="date" id="searchFromDate">
+            </div>
+
+            <div class="search-section">
+                <label>Đến ngày:</label>
+                <input type="date" id="searchToDate">
+            </div>
+
+            <!-- Tìm kiếm theo khoảng tiền -->
+            <div class="search-section">
+                <label>Từ số tiền:</label>
+                <input type="number" id="searchMinAmount" placeholder="0" value="0">
+            </div>
+
+            <div class="search-section">
+                <label>Đến số tiền:</label>
+                <input type="number" id="searchMaxAmount" placeholder="999999999" value="999999999">
+            </div>
+        </div>
+
+        <div class="search-actions">
+            <button class="btn-reset" onclick="resetSearchFilters()">🔄 Đặt lại</button>
+            <button class="btn-search" onclick="performSearch()">🔍 Tìm kiếm</button>
+        </div>
+    </div>
+</div>
+<!--Lịch sử giao dịch-->
+<div class="popup" id="HistoryPopup">
+    <div class="popup-content search-content">
+        <div class="search-header">
+            <h3>Lịch sử giao dịch</h3>
+            <button class="close-btn" onclick="closeHistoryPopup()">✕</button>
+        </div>
+
+        <div class="search-body">
+
+            <!-- Tìm kiếm theo khoảng ngày -->
+            <div class="search-section">
+                <label>Từ ngày:</label>
+                <input type="date" id="FromDate">
+            </div>
+
+            <div class="search-section">
+                <label>Đến ngày:</label>
+                <input type="date" id="ToDate">
+            </div>
+
+        <div class="search-actions">
+            <button class="btn-reset" onclick="resetSearchFilters()">🔄 Đặt lại</button>
+            <button class="btn-search" onclick="CheckHistory()">🔍 Tìm kiếm</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+    </main>
+</div>
+
+<script src="./scripgiaodich.js"></script>
+<script src="./storage.js"></script>
+</body>
+</html>

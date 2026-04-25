@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê - Quản Lý</title>
+    <link rel="stylesheet" href="./stylethongke.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3>Xin chào, Admin!</h3>
+            </div>
+<nav class="menu">
+    <a href="./Trangchu.html" class="menu-item" onclick="event.preventDefault(); goToPage('./Trangchu.html')">
+        <i class="fa-solid fa-house"></i> Trang chủ
+    </a>
+
+    <a href="./giaodich.html" class="menu-item" onclick="event.preventDefault(); goToPage('./giaodich.html')">
+        <i class="fa-solid fa-receipt"></i> Giao dịch
+    </a>
+
+    <a href="./Thongke.html" class="menu-item active" onclick="event.preventDefault(); goToPage('./Thongke.html')">
+        <i class="fa-solid fa-chart-pie"></i> Thống kê
+    </a>
+
+    <a href="./danhmuc.html" class="menu-item" onclick="event.preventDefault(); goToPage('./danhmuc.html')">
+        <i class="fa-solid fa-layer-group"></i> Danh mục
+    </a>
+
+    <a href="./capnhatthongtin.html" class="menu-item" onclick="event.preventDefault(); goToPage('./capnhatthongtin.html')">
+        <i class="fa-solid fa-user-pen"></i> Cập nhật thông tin
+    </a>
+</nav>
+            <div class="logout-section">
+                <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+        </aside>
+    <main class="main-content">
+        <div class="content-box">
+    <div class="stats-wrapper">
+
+        <div class="header">
+            <div class="left">
+                <input type="month" id="monthPicker">
+                <button onclick="renderChart()">Xem</button>
+            </div>
+
+            <button class="btn-export" onclick="exportExcel()">
+                <i class="fa-solid fa-file-excel"></i>
+                   Xuất Excel
+             </button>
+        </div>
+
+        <!-- 2 BOX -->
+        <div class="stats-row">
+            <div class="small-box">
+                <h3>Chi tiêu</h3>               
+                <div class="chart-box">
+                    <canvas id="expenseChart"></canvas>
+                </div>                
+                <div id="expenseList"></div>
+            </div>
+            <div class="small-box">
+                <h3>Thu nhập</h3>
+                <div class="chart-box">
+                    <canvas id="incomeChart"></canvas>
+                </div>                
+                <div id="incomeList"></div>
+            </div>
+        </div>
+
+        <!-- BOX DÀI -->
+        <div class="big-box">
+            <div class="compare-header">
+            <h3>Biểu đồ so sánh biến động thu chi</h3>
+            <span id="compareText"></span>
+            </div>
+
+            <canvas id="compareChart"></canvas>
+        </div>
+
+    </div>
+</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./scriptthongke.js"></script>
+<script src="./storage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</body>
+</html>

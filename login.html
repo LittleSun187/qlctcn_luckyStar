@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Quản Lý</title>
+    <link rel="stylesheet" href="./stylelogin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" id="loginForm">
+            <div class="header">
+                <span>ĐĂNG NHẬP</span>
+                <div class="window-controls"><span>—</span><span>▢</span><span>✕</span></div>
+            </div>
+            <h2>ĐĂNG NHẬP</h2>
+            <div class="input-group">
+                <i class="fa-solid fa-key"></i>
+                <input type="text" id="userLogin" placeholder="Tên đăng nhập">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="passLogin" placeholder="Mật khẩu">
+            </div>
+            <button class="btn-submit" onclick="handleLogin()">ĐĂNG NHẬP</button>
+            <a href="#" class="link-text" onclick="showForm('forgotForm')">Quên mật khẩu?</a>
+            <p>Chưa có tài khoản? <a href="#" onclick="showForm('registerForm')">Đăng ký</a></p>
+        </div>
+
+        <div class="form-box hidden" id="registerForm">
+            <div class="header">
+                <span>ĐĂNG KÝ</span>
+                <div class="window-controls"><span>—</span><span>▢</span><span>✕</span></div>
+            </div>
+            <h2>ĐĂNG KÝ</h2>
+            <div class="input-group"><i class="fa-solid fa-user"></i><input type="text" id="regName" placeholder="Họ tên"></div>
+            <div class="input-group"><i class="fa-solid fa-at"></i><input type="email" id="regEmail" placeholder="Email"></div>
+            <div class="input-group"><i class="fa-solid fa-key"></i><input type="text"id="regUser" placeholder="Tên đăng nhập"></div>
+            <div class="input-group"><i class="fa-solid fa-lock"></i><input type="password" id="regPass" placeholder="Mật khẩu"></div>
+            <div class="input-group"><i class="fa-solid fa-lock"></i><input type="password" id="regPass2" placeholder="Xác nhận lại mật khẩu"></div>
+            <button class="btn-submit" onclick="handleRegister()">ĐĂNG KÝ</button>
+            <p>Đã có tài khoản? <a href="#" onclick="showForm('loginForm')">Đăng nhập</a></p>
+        </div>
+
+        <div class="form-box hidden" id="forgotForm">
+            <div class="header">
+                <span>QUÊN MẬT KHẨU</span>
+                <div class="window-controls"><span>—</span><span>▢</span><span>✕</span></div>
+            </div>
+            <h2>KHÔI PHỤC</h2>
+            <p style="margin-bottom: 10px; padding: 0 20px;">Nhập email của bạn để nhận mã xác nhận</p>
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Email khôi phục">
+            </div>
+            <button class="btn-submit" onclick="alert('Mã khôi phục đã được gửi!')">GỬI MÃ</button>
+            <p><a href="#" onclick="showForm('loginForm')">Quay lại đăng nhập</a></p>
+        </div>
+    </div>
+
+
+
+    
+   <script src="./scriptlogin.js"></script>
+   <script src="./storage.js"></script>
+
+</body>
+</html>

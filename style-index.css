@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ background: linear-gradient(135deg, #74a9f8, #50d2f2);
+}
+
+/* layout */
+.container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+/* 🐷 heo */
+.pig {
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: shake 0.8s infinite ease-in-out;
+  z-index: 1;
+  animation: bounceOnce 0.8s ease-out; 
+}
+/* ✋ tay */
+.hand {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+/* 💰 coin */
+.coin {
+  width: 50px;
+  height: 50px;
+  background: gold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 3;
+  animation: drop 1.5s infinite;
+}
+@keyframes drop {
+  0% {
+    transform: translate(-10px, -80px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-10px, 180px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* heo rung rinh */
+@keyframes shake {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  25% { transform: translateX(-50%) rotate(2deg); }
+  50% { transform: translateX(-50%) rotate(-2deg); }
+  75% { transform: translateX(-50%) rotate(2deg); }
+  100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+
+
+
+@keyframes bounceOnce {
+  0% {
+    transform: translateX(-50%) scale(0.5); /* nhỏ lúc đầu */
+  }
+  50% {
+    transform: translateX(-50%) scale(1.15); /* phồng lên */
+  }
+  70% {
+    transform: translateX(-50%) scale(0.95); /* nén */
+  }
+  100% {
+    transform: translateX(-50%) scale(1); /* về bình thường */
+  }
+}

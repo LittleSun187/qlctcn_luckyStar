@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục - Quản lý</title>
+    <link rel="stylesheet" href="./styledanhmuc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3>Xin chào, Admin!</h3>
+            </div>
+<nav class="menu">
+    <a href="./Trangchu.html" class="menu-item" onclick="event.preventDefault(); goToPage('./Trangchu.html')">
+        <i class="fa-solid fa-house"></i> Trang chủ
+    </a>
+
+    <a href="./giaodich.html" class="menu-item" onclick="event.preventDefault(); goToPage('./giaodich.html')">
+        <i class="fa-solid fa-receipt"></i> Giao dịch
+    </a>
+
+    <a href="./thongke.html" class="menu-item" onclick="event.preventDefault(); goToPage('./thongke.html')">
+        <i class="fa-solid fa-chart-pie"></i> Thống kê
+    </a>
+
+    <a href="./danhmuc.html" class="menu-item active" onclick="event.preventDefault(); goToPage('./danhmuc.html')">
+        <i class="fa-solid fa-layer-group"></i> Danh mục
+    </a>
+
+    <a href="./capnhatthongtin.html" class="menu-item" onclick="event.preventDefault(); goToPage('./capnhatthongtin.html')">
+        <i class="fa-solid fa-user-pen"></i> Cập nhật thông tin
+    </a>
+</nav>
+            <div class="logout-section">
+                <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+        </aside>
+
+ <main class="main-content">
+        <div class="content-box">
+            <div class="category-wrapper">
+
+             <!-- TAB -->
+            <div class="tabs">
+                
+                 <div id="tab-expense" class="tab-item " onclick="switchTab('expense',this)">Chi tiêu</div>
+                 <div id="tab-income" class="tab-item" onclick="switchTab('income',this)">Thu nhập</div>
+            <!--thanh trượt-->
+                <div class="tab-line" id="tabLine"></div>
+            </div>
+            
+            <!-- BOX hiển thị danh mục -->
+            <div class="category-box">
+                <div id="category-list">
+
+                </div>
+                <!-- NÚT -->
+                <button class="add-btn" onclick="openPopup()">+ Thêm</button>
+            </div>
+
+            </div>
+        </div>
+ <!-- POPUP THÊM DANH MỤC -->
+    <div class="popup" id="categoryPopup">
+        <div class="popup-box">
+            <h2>Thêm danh mục</h2>
+
+             <!-- INPUT -->
+            <input type="text" id="categoryName" placeholder="Tên danh mục">
+
+            <small id="charCount">0/16</small>
+
+            <!-- CHỌN MÀU -->
+            <h3>Chọn màu</h3>
+            <div class="color-list">
+                <!-- đỏ / hồng -->
+                <div class="color active" data-color="#e76f51"></div>
+                <div class="color" data-color="#ff4d6d"></div>
+                 <div class="color" data-color="#ef476f"></div>
+                <div class="color" data-color="#ff006e"></div>
+
+                <!-- xanh lá -->
+                <div class="color" data-color="#2a9d8f"></div>
+                <div class="color" data-color="#06d6a0"></div>
+                <div class="color" data-color="#38b000"></div>
+                <div class="color" data-color="#70e000"></div>
+
+                <!-- xanh dương -->
+                <div class="color" data-color="#3a86ff"></div>
+                <div class="color" data-color="#118ab2"></div>
+                <div class="color" data-color="#4361ee"></div>
+                <div class="color" data-color="#4cc9f0"></div>
+
+                <!-- vàng / cam -->
+                <div class="color" data-color="#ffbe0b"></div>
+                <div class="color" data-color="#fb5607"></div>
+                <div class="color" data-color="#e9c46a"></div>
+                <div class="color" data-color="#f4a261"></div>
+
+                <!-- tím -->
+                <div class="color" data-color="#8338ec"></div>
+                <div class="color" data-color="#7209b7"></div>
+                <div class="color" data-color="#560bad"></div>
+                <div class="color" data-color="#b5179e"></div>
+
+                <!-- trung tính -->
+                <div class="color" data-color="#264653"></div>
+                <div class="color" data-color="#6c757d"></div>
+                <div class="color" data-color="#adb5bd"></div>
+                <div class="color" data-color="#000000"></div>
+
+            </div>
+
+        <!-- ICON -->
+        <h3>Chọn biểu tượng</h3>
+        <div class="icon-list">
+                     <!-- 🏠 Nhà cửa -->
+                    <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-building"></i>
+                    <i class="fa-solid fa-bed"></i>
+                    <i class="fa-solid fa-couch"></i>
+                    <i class="fa-solid fa-bath"></i>
+                    <i class="fa-solid fa-key"></i>
+                    <i class="fa-solid fa-door-open"></i>
+
+                    <!-- 🍔 Ăn uống -->
+                    <i class="fa-solid fa-burger"></i>
+                    <i class="fa-solid fa-pizza-slice"></i>
+                    <i class="fa-solid fa-bowl-food"></i>
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <i class="fa-solid fa-ice-cream"></i>
+                    <i class="fa-solid fa-wine-glass"></i>
+                    <i class="fa-solid fa-utensils"></i>
+
+                    <!-- 🚗 Di chuyển -->
+                    <i class="fa-solid fa-car"></i>
+                    <i class="fa-solid fa-motorcycle"></i>
+                    <i class="fa-solid fa-bus"></i>
+                    <i class="fa-solid fa-plane"></i>
+                    <i class="fa-solid fa-train"></i>
+                    <i class="fa-solid fa-bicycle"></i>
+                    <i class="fa-solid fa-taxi"></i>
+
+                    <!-- 🛒 Mua sắm -->
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <i class="fa-solid fa-store"></i>
+                    <i class="fa-solid fa-box"></i>
+                    <i class="fa-solid fa-tag"></i>
+                    <i class="fa-solid fa-receipt"></i>
+
+                    <!-- 💰 Tiền -->
+                    <i class="fa-solid fa-money-bill"></i>
+                    <i class="fa-solid fa-wallet"></i>
+                    <i class="fa-solid fa-coins"></i>
+                    <i class="fa-solid fa-sack-dollar"></i>
+                    <i class="fa-solid fa-piggy-bank"></i>
+                    <i class="fa-solid fa-credit-card"></i>
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <!-- 🎮 Giải trí -->
+                    <i class="fa-solid fa-gamepad"></i>
+                    <i class="fa-solid fa-music"></i>
+                    <i class="fa-solid fa-film"></i>
+                    <i class="fa-solid fa-tv"></i>
+                    <i class="fa-solid fa-headphones"></i>
+                    <i class="fa-solid fa-microphone"></i>
+
+                    <!-- 📚 Học tập -->
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-laptop"></i>
+                    <i class="fa-solid fa-school"></i>
+                    <i class="fa-solid fa-calculator"></i>
+
+                    <!-- 💡 Điện nước -->
+                    <i class="fa-solid fa-bolt"></i>
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <i class="fa-solid fa-faucet"></i>
+                    <i class="fa-solid fa-plug"></i>
+                    <i class="fa-solid fa-fan"></i>
+
+                    <!-- 🏥 Sức khỏe -->
+                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-hospital"></i>
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <i class="fa-solid fa-pills"></i>
+                    <i class="fa-solid fa-briefcase-medical"></i>
+
+                    <!-- 🐶 Thú cưng -->
+                    <i class="fa-solid fa-dog"></i>
+                    <i class="fa-solid fa-cat"></i>
+                    <i class="fa-solid fa-fish"></i>
+                    <i class="fa-solid fa-paw"></i>
+                    <i class="fa-solid fa-dove"></i>
+
+                    <!-- 🎉 Khác / thú vị -->
+                    <i class="fa-solid fa-gift"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-globe"></i>
+                    <i class="fa-solid fa-camera"></i>
+                    <i class="fa-solid fa-calendar"></i>
+                    <i class="fa-solid fa-fire"></i>
+                    <i class="fa-solid fa-crown"></i>
+                    <i class="fa-solid fa-ghost"></i>
+                    <i class="fa-solid fa-skull"></i>
+                    <i class="fa-solid fa-face-smile"></i>
+                    <i class="fa-solid fa-face-laugh"></i>
+                    <i class="fa-solid fa-face-angry"></i>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="confirm-btn" onclick="addCategory()">✔</button>
+
+    </div>
+</div>
+
+</main>
+    </div>
+    <script src="./scripdanhmuc.js"></script>
+    <script src="./storage.js"></script>
+</body>
+</html>
+

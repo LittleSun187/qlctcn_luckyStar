@@ -1,0 +1,901 @@
+:root {
+    --primary-blue: #2b659c;
+    --light-blue: #e3f2fd;
+    --bg-gradient: linear-gradient(135deg, #d6e4f9 0%, #a2c2e6 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.05);
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin: 0 auto 15px;
+}
+
+.menu a {
+    display: block;
+    padding: 15px 20px;
+    color: #444;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.menu a i { margin-right: 15px; width: 20px; }
+
+.menu a.active, .menu a:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.logout-section {
+    margin-top: auto;
+}
+.logout-section a {
+    display: block;
+    padding: 15px;
+    border-radius: 15px;
+    color: #444;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.logout-section a:hover {
+    background: #fdfafa;
+    color: rgb(125, 209, 240);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+
+
+
+
+
+
+/* BOX CHÍNH */
+.content-box {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    height: 100%;
+    position: relative;
+}
+
+/* HEADER */
+.header input {
+    font-size: 18px;
+    padding: 5px 10px;
+    border: 2px solid #7dbfd6;
+    border-radius: 10px;
+    color: #2b9ed6;
+}
+
+.header h2 {
+    font-weight: 600;
+}
+
+.arrow span {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* TAB */
+.tabs {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.tab-box {
+    flex: 1;
+    border: 2px solid #7dbfd6;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    background: #f5fbff;
+    transition: 0.2s;
+}
+
+.tab-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.tab-box p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.tab-box h3 {
+    color: #2b9ed6;
+    font-size: 20px;
+}
+/* chi tiêu */
+#expense {
+    color: #fb5a52; /* cam */
+}
+
+/* thu nhập */
+#income {
+    color: #2abcab; /* xanh */
+}
+/* BUDGET */
+.budget-box {
+    margin-top: 15px;
+    border: 2px solid #a6d6e5;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.budget-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.budget-row input {
+    border: 2px solid #7dbfd6;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 150px;
+}
+
+.budget-row button {
+    border: 2px solid #7dbfd6;
+    background: transparent;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.remain {
+    margin-top: 10px;
+}
+
+
+.remain-box {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.remain-box span {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* TRANSACTION */
+.transaction {
+    margin-top: 25px;
+    border: 3px solid #2b9ed6;
+    border-radius: 50px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#transaction-list {   
+    margin-top: 20px;
+    max-height: 450px;   
+    overflow-y: auto;    
+    padding-right: 5px;
+}
+.date-group {
+    border: 3px solid #2b9ed6;
+    border-radius: 25px;
+    padding: 18px;
+    margin-top: 20px;
+    background: white;
+}
+
+.date-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #2b659c;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #d9eef8;
+    padding-bottom: 10px;
+}
+
+.transaction-item {
+    padding: 10px 0;
+    border-top: 1px solid #eef6fb;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 12px 8px;
+    border-radius: 10px;
+}
+
+.transaction-item:hover {
+    background: #f5faff;
+}
+
+.transaction-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.transaction-left i {
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.transaction-note {
+    margin-left: 42px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+.circle {
+    width: 60px;
+    height: 60px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.info h3 {
+    color: #2b9ed6;
+}
+
+.info p {
+    font-size: 14px;
+    color: #555;
+}
+
+.amount {
+    text-align: right;
+    color: #2b9ed6;
+}
+
+
+
+
+
+/* THANH LUÔN DÍNH DƯỚI */
+.bottom-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 320px; /* tránh sidebar */
+    right: 20px;
+    z-index: 100;
+}
+
+/* THANH CONG */
+.bottom-bar {
+    background: #3785ce;
+    height: 90px;
+    border-radius: 30px 30px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    gap: 20px;
+}
+/* TẠO CHỖ LÕM */
+.bottom-bar::before {
+    content: "";
+    position: absolute;
+    right: 20px; /* chỉnh vị trí lõm */
+    top: -40px;
+    width: 100px;
+    height: 100px;
+    background: white; /* cùng màu nền */
+    border-radius: 50%;
+}
+
+
+/* nút */
+.search-btn, .history-btn {
+    padding: 8px 15px;
+    border: 2px solid pink;
+    border-radius: 20px;
+    background: white;
+    color: pink;
+}
+
+.add-btn {
+    position: fixed;
+    right: 53px;
+    bottom: 40px;
+
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: rgb(84, 190, 251);
+    border: 3px solid rgb(84, 190, 251);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    z-index: 200;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* DẤU + */
+.add-btn::before,
+.add-btn::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 2px;
+}
+
+/* dọc */
+.add-btn::before {
+    width: 4px;
+    height: 30px;
+}
+
+/* ngang */
+.add-btn::after {
+    width: 30px;
+    height: 4px;
+}
+
+/* POPUP */
+/* POPUP NỀN */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: none;
+
+    background: rgba(0,0,0,0.3);
+
+    justify-content: center;  /* 🔥 ngang */
+    align-items: center;      /* 🔥 dọc (ra giữa màn hình) */
+}
+
+/* FORM */
+.popup-content {
+    background: white;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 25px;
+    padding: 20px;
+}
+.popup-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.popup-tab {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: 2px solid #b8d8ff;
+    border-radius: 20px;
+    background: white;
+    color: #2b659c;
+    cursor: pointer;
+}
+
+.popup-tab.active {
+    background: #dff0ff;
+    font-weight: bold;
+}
+
+.category-dropdown {
+    display: none;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    background: white;
+    overflow: hidden;
+}
+
+/* tab trong dropdown */
+.dropdown-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    color: #2b659c;
+    font-weight: 500;
+}
+
+.dropdown-tab.active {
+    background: #eaf5ff;
+    font-weight: bold;
+}
+
+/* list danh mục */
+#dropdownCategoryList {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.category-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.category-option:hover {
+    background: #f5faff;
+}
+
+.category-option i {
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+/* Thanh nhỏ */
+.drag-line {
+    width: 50px;
+    height: 5px;
+    background: #ccc;
+    border-radius: 10px;
+    margin: 0 auto 15px;
+}
+
+/* box chung */
+.form-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 40px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+.category-select {
+    cursor: pointer;
+    position: relative;
+    
+}
+
+#selectedCircle,
+#editSelectedCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.category-select .fa-chevron-down {
+    margin-left: auto;
+}
+
+#selectedCircle i,
+#editSelectedCircle i {
+    font-size: 16px;
+    margin: 0;
+}
+
+
+/* circle */
+.circle {
+    width: 35px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* divider */
+.divider {
+    width: 2px;
+    height: 25px;
+    background: #999;
+    margin: 0 10px;
+}
+
+/* input */
+.form-box input {
+    border: none;
+    outline: none;
+}
+
+/* ghi chú */
+.note {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* 🔥 MONEY BOX */
+.money-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+}
+
+/* số tiền */
+.money-box input {
+    font-size: 35px;
+    border: none;
+    outline: none;
+    width: 60%;
+}
+.warning-icon {
+    width: 22px;
+    height: 22px;
+    border: 2px solid red;
+    border-radius: 50%;
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HIỆN */
+.warning-icon.show {
+    display: flex;
+}
+
+/* vị trí riêng */
+.money-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+.category-select {
+    position: relative;
+}
+
+/* dấu ! ở danh mục */
+#warningCategory {
+    position: absolute;
+    right: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* nút ✔ */
+.submit-btn {
+    background: #7fb8c9;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+/*XEM CHI TIẾT GIAO  DỊCH*/
+.detail-popup-box{
+    max-width:420px;
+}
+
+.detail-header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.detail-header .circle{
+    margin:auto;
+    width:70px;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:28px;
+}
+
+.detail-row{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.detail-actions{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.detail-actions button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:15px;
+    background:#5aa9ff;
+    color:white;
+    cursor:pointer;
+}
+
+.detail-actions .delete-btn{
+    background:#ff4d4f;
+}
+
+/* Detail Popup Styles */
+.detail-content {
+    max-width: 500px;
+    background: white;
+    border-radius: 20px;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.detail-header h3 {
+    margin: 0;
+    color: #2b659c;
+    font-size: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.detail-body {
+    padding: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+
+.detail-row .label {
+    color: #999;
+    font-weight: 500;
+}
+
+.detail-row span:last-child {
+    color: #2b659c;
+    font-weight: 600;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn-cancel,
+.btn-edit,
+.btn-delete {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-cancel {
+    background: #e8e8e8;
+    color: #2b659c;
+}
+
+.btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+.btn-edit {
+    background: #54bafb;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #2da8ff;
+}
+
+.btn-delete {
+    background: #ff4d4f;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #ff2c2c;
+}
+
+/* Search Popup Styles */
+.search-content {
+    max-width: 420px;
+    background: white;
+    border-radius: 20px;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.search-header h3 {
+    margin: 0;
+    color: #2b659c;
+    font-size: 18px;
+}
+
+.search-body {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-input:focus {
+    border-color: #2b659c;
+    box-shadow: 0 0 5px rgba(43, 101, 156, 0.2);
+}
+
+.search-section {
+    margin-bottom: 15px;
+}
+
+.search-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2b659c;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.search-section input,
+.search-section select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 13px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-section input:focus,
+.search-section select:focus {
+    border-color: #2b659c;
+    box-shadow: 0 0 5px rgba(43, 101, 156, 0.2);
+}
+
+.search-actions {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn-reset,
+.btn-search {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-reset {
+    background: #e8e8e8;
+    color: #2b659c;
+}
+
+.btn-reset:hover {
+    background: #d0d0d0;
+}
+
+.btn-search {
+    background: #54bafb;
+    color: white;
+}
+
+.btn-search:hover {
+    background: #2da8ff;
+}
