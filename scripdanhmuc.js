@@ -71,6 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
     categories = getCategories();
 
     render();
+           // 🔥 chạy mặc định khi load
+    const firstTab = document.querySelector(".tab-item");
+    if (firstTab) {
+          switchTab("expense", firstTab);
+     }
 
     // ===== HIỂN THỊ MÀU =====
     document.querySelectorAll(".color").forEach(c => {
