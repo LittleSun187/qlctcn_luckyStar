@@ -73,7 +73,7 @@ function handleLogin() {
     localStorage.setItem("currentUser", JSON.stringify(user));
     localStorage.setItem("isLogin", "true");
 
-    window.location.href = "trangchu.html";
+    window.location.href = "Trangchu.html";
 }
 
 
