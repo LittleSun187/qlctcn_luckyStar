@@ -92,7 +92,7 @@ body {
     flex: 1;
     overflow-y: auto;
 
-    max-width: 1100px;    
+    max-width: 1500px;    
     margin: 0 auto;      
 
 }
@@ -169,7 +169,7 @@ body {
     justify-content: space-between;
 }
 #category-list {
-    max-height: 400px;   /* 🔥 chiều cao tối đa */
+    max-height: 300px;   /* 🔥 chiều cao tối đa */
     overflow-y: auto;    /* 🔥 bật scroll dọc */
     padding-right: 5px;  /* tránh bị che chữ bởi scroll */
 
