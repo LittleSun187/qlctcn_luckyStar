@@ -3,7 +3,18 @@
     --light-blue: #e3f2fd;
     --bg-gradient: linear-gradient(135deg, #d6e4f9 0%, #a2c2e6 100%);
 }
+:root {
+    --bottom-space: 160px;
+}
+.transaction-list::after {
+    content: "";
+    display: block;
+    height: 160px;
+}
 
+#transactionList::after {
+    height: var(--bottom-space);
+}
 * {
     margin: 0;
     padding: 0;
