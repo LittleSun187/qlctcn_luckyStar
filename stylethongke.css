@@ -19,7 +19,7 @@ body {
 /* ===== DASHBOARD LAYOUT ===== */
 .dashboard-container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;   
     padding: 20px;
     gap: 20px;
 }
@@ -105,10 +105,12 @@ body {
     height: calc(100vh - 40px);
     overflow-y: auto;
 
-    position: fixed;
+   
     top: 20px;
-    left: 320px;
+   
     right: 20px;
+    position: relative;   /* 🔥 FIX */
+    width: 100%;
 }
 
 /* ===== THỐNG KÊ ===== */
