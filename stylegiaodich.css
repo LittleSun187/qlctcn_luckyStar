@@ -88,14 +88,12 @@ body {
 }
 
 
+
 .main-content {
     flex: 1;
-    
     max-width: 1500px;    
-    margin: 0 auto;      
-
+    margin: 0 auto;  
 }
- 
 
 
 
@@ -228,7 +226,6 @@ body {
     max-height: 450px;   
     overflow-y: auto;    
     padding-right: 5px;
-    padding-bottom: 120px;
 }
 .date-group {
     border: 3px solid #2b9ed6;
