@@ -109,8 +109,13 @@ html, body {
     height: 100%;
     position: relative;
     overflow: hidden;
+    padding-bottom: 110px;
 }
-
+.content-box::after {
+    content: "";
+    display: block;
+    height: 160px; /* 🔥 vùng đệm thật */
+}
 /* HEADER */
 .header input {
     font-size: 18px;
@@ -224,11 +229,11 @@ html, body {
     justify-content: space-between;
 }
 #transaction-list {   
-     margin-top: 20px;
+    margin-top: 20px;
     max-height: 450px;   /* 🔥 đổi lại */
     overflow-y: auto;
     padding-right: 5px;
-    padding-bottom: 100px;
+    padding-bottom: 150px;
 }
 
 .date-group {
@@ -357,7 +362,17 @@ html, body {
     background: white;
     color: pink;
 }
+.search-btn, .history-btn {
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
 
+
+/* click */
+.search-btn:active,
+.history-btn:active {
+    transform: scale(0.92);
+}
 .add-btn {
     position: fixed;
     right: 53px;
@@ -398,6 +413,18 @@ html, body {
 .add-btn::after {
     width: 30px;
     height: 4px;
+}
+.add-btn {
+    transition: all 0.25s ease;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.add-btn:active {
+    transform: scale(0.9);
 }
 
 /* POPUP */
