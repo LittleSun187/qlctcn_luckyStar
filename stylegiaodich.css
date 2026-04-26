@@ -6,11 +6,7 @@
 :root {
     --bottom-space: 160px;
 }
-.transaction-list::after {
-    content: "";
-    display: block;
-    height: 160px;
-}
+
 
 #transactionList::after {
     height: var(--bottom-space);
@@ -476,7 +472,7 @@ html, body {
     border: 2px solid #b8d8ff;
     border-radius: 20px;
     background: white;
-    color: #2b659c;
+    color: #121213;
     cursor: pointer;
 }
 
